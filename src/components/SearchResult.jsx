@@ -33,6 +33,8 @@ const SearchResult = () => {
       document.title = res?.queries.nextPage[0].searchTerms;
 
       setResult(res);
+    }).catch((error)=>{
+      alert("API limit over for 1 day");
     });
   };
 

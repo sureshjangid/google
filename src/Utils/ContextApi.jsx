@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { createContext, useState } from "react";
 
-const ContextApi = () => {
-  return (
-    <div>ContextApi</div>
-  )
-}
+export const Context = createContext();
 
-export default ContextApi
+export const AppContext = (props) => {
+    const [imageSearch, setImageSearch] = useState(false);
+
+    return (
+        <Context.Provider
+            value={{
+                imageSearch,
+                setImageSearch,
+            }}
+        >
+            {props.children}
+        </Context.Provider>
+    );
+};

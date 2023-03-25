@@ -1,20 +1,24 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from './components/Home'
-import SearchResult from './components/SearchResult'
-
+import Home from "./components/Home";
+import SearchResult from "./components/SearchResult";
+import { AppContext } from "./utils/ContextApi";
 
 function App() {
-
-  return (
-   <BrowserRouter>
-   <Routes>
-    <Route path="/" element={<Home/>}/> 
-    <Route  path="/" element={<SearchResult/>}/> 
-
-   </Routes>
-   </BrowserRouter>
-  )
+    return (
+        <AppContext>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" exact element={<Home />} />
+                    <Route
+                        path="/:query/:startIndex"
+                        exact
+                        element={<SearchResult />}
+                    />
+                </Routes>
+            </BrowserRouter>
+        </AppContext>
+    );
 }
 
-export default App
+export default App;
